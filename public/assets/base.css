@@ -1,0 +1,16 @@
+/* Base layer: reset + token wiring only. Section styles get added as each part is designed. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body-lg);
+}
+img, svg { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

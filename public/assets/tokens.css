@@ -1,0 +1,140 @@
+/* ============================================================
+   Aiden Hutchins Portfolio — Design System Tokens
+   ============================================================ */
+
+/* Fonts are self-hosted (Space Grotesk, Space Mono; SIL OFL) so the page makes no
+   third-party requests and the CSP can stay at font-src 'self'. */
+@font-face { font-family: 'Space Grotesk'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/space-grotesk-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Space Grotesk'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/space-grotesk-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Space Grotesk'; font-weight: 700; font-style: normal; font-display: swap; src: url('fonts/space-grotesk-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Space Mono'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/space-mono-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Space Mono'; font-weight: 700; font-style: normal; font-display: swap; src: url('fonts/space-mono-latin-700-normal.woff2') format('woff2'); }
+
+:root {
+
+  /* -- Font Families -- */
+  --font-primary:    'Space Grotesk', sans-serif;
+  --font-mono:       'Space Mono', monospace;
+
+  /* -- Font Weights -- */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-bold:     700;
+
+  /* -- Individual font-size tokens -- */
+  --fs-display:    48px;
+  --fs-h1:         36px;
+  --fs-h2:         28px;
+  --fs-h3:         22px;
+  --fs-h4:         18px;
+  --fs-body-lg:    16px;
+  --fs-body:       14px;
+  --fs-body-sm:    12px;
+  --fs-label:      12px;
+  --fs-caption:    11px;
+  --fs-mono:       13px;
+  --fs-mono-sm:    11px;
+
+  /* -- Line heights -- */
+  --lh-display:    56px;
+  --lh-h1:         44px;
+  --lh-h2:         36px;
+  --lh-h3:         28px;
+  --lh-h4:         24px;
+  --lh-body-lg:    24px;
+  --lh-body:       20px;
+  --lh-body-sm:    16px;
+  --lh-label:      16px;
+  --lh-caption:    14px;
+  --lh-mono:       20px;
+  --lh-mono-sm:    16px;
+
+  /* -- Slate System Shades -- */
+  --slate-50:   #F8FAFC;
+  --slate-100:  #F1F5F9;
+  --slate-200:  #E2E8F0;
+  --slate-300:  #CBD5E1;
+  --slate-400:  #94A3B8;
+  --slate-500:  #64748B;
+  --slate-600:  #475569;
+  --slate-700:  #334155;
+  --slate-800:  #1E293B;
+  --slate-900:  #0F172A;
+  --slate-950:  #020617;
+
+  /* -- Blue Interaction Accents -- */
+  --blue-50:    #EFF6FF;
+  --blue-100:   #DBEAFE;
+  --blue-200:   #BFDBFE;
+  --blue-300:   #93C5FD;
+  --blue-400:   #60A5FA;
+  --blue-500:   #3B82F6;
+  --blue-600:   #2563EB;
+  --blue-700:   #1D4ED8;
+  --blue-800:   #1E40AF;
+  --blue-900:   #1E3A8A;
+  --blue-950:   #172554;
+
+  /* -- Semantic: Backgrounds -- */
+  --bg-primary:    var(--slate-50);
+  --bg-secondary:  #FFFFFF;
+  --bg-surface:    #FFFFFF;
+  --bg-elevated:   var(--slate-100);
+
+  /* -- Semantic: Text -- */
+  --text-primary:    var(--slate-900);
+  --text-secondary:  var(--slate-600);
+  --text-tertiary:   var(--slate-400);
+  --text-inverse:    #FFFFFF;
+
+  /* -- Semantic: Accent -- */
+  --accent-primary:  var(--blue-600);
+  --accent-hover:    var(--blue-700);
+  --accent-subtle:   var(--blue-50);
+
+  /* -- Semantic: Borders -- */
+  --border-default:  var(--slate-200);
+  --border-subtle:   var(--slate-100);
+  --border-strong:   var(--slate-300);
+
+  /* -- Status / Signal Colors -- */
+  --status-success:  #22C55E;
+  --status-warning:  #F59E0B;
+  --status-error:    #EF4444;
+  --status-info:     #3B82F6;
+
+  /* -- Spacing Scale -- */
+  --space-1:   2px;
+  --space-2:   4px;
+  --space-3:   8px;
+  --space-4:   12px;
+  --space-5:   16px;
+  --space-6:   20px;
+  --space-7:   24px;
+  --space-8:   32px;
+  --space-9:   40px;
+  --space-10:  48px;
+  --space-11:  64px;
+  --space-12:  80px;
+
+  /* -- Border Radii -- */
+  --radius-none:  0;
+  --radius-sm:    4px;
+  --radius-md:    6px;
+  --radius-lg:    8px;
+  --radius-xl:    12px;
+  --radius-2xl:   16px;
+  --radius-full:  9999px;
+
+  /* -- Shadows -- */
+  --shadow-xs:  0  1px  2px  0    rgba(15, 23, 41, 0.06);
+  --shadow-sm:  0  1px  3px  0    rgba(15, 23, 41, 0.06),
+                0  2px  6px  -1px rgba(15, 23, 41, 0.04);
+  --shadow-md:  0  2px  4px  -1px rgba(15, 23, 41, 0.06),
+                0  6px 16px  -2px rgba(15, 23, 41, 0.08);
+  --shadow-lg:  0  4px  8px  -2px rgba(15, 23, 41, 0.06),
+                0 16px 32px  -4px rgba(15, 23, 41, 0.12);
+  --shadow-xl:  0  8px 12px  -4px rgba(15, 23, 41, 0.08),
+                0 24px 48px  -8px rgba(15, 23, 41, 0.16);
+}
+
