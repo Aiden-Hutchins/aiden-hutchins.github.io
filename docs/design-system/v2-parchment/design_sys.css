@@ -1,6 +1,7 @@
 /* ============================================================
    Aiden Hutchins Portfolio — Design System Tokens
-   v2 "Parchment" — case-file paper, ink, field green, stamp red
+   v2.1 "Parchment" — case-file paper, ink, field green, stamp red,
+   highlighter amber
    ------------------------------------------------------------
    Fonts are loaded separately (assets/fonts.css, self-hosted),
    so this file is identical in public/assets/tokens.css and in
@@ -82,6 +83,18 @@
   --stamp-500:  #A13D2D;
   --stamp-600:  #85301F;
 
+  /* -- Highlighter Amber: contrast color. Used as a FILL (marks, bars,
+        tabs) with ink on top, never as text on paper — bright amber is
+        too light to read as text. amber-700 is the only text-safe step. -- */
+  --amber-50:   #FBF3DE;
+  --amber-100:  #F8E7BC;
+  --amber-200:  #F3D58A;
+  --amber-300:  #EDBE4F;
+  --amber-400:  #E6A817;
+  --amber-500:  #D99400;
+  --amber-600:  #A86A00;   /* large text / icons only (3.8:1) */
+  --amber-700:  #8F5800;   /* text-safe (5.1:1) */
+
   /* -- Semantic: Backgrounds -- */
   --bg-primary:    var(--paper-100);
   --bg-secondary:  var(--paper-200);
@@ -99,6 +112,12 @@
   --accent-hover:    var(--green-700);
   --accent-subtle:   var(--green-50);
   --accent-stamp:    var(--stamp-500);
+
+  /* -- Semantic: Highlight (contrast color) -- */
+  --highlight:         var(--amber-300);   /* marker fill behind ink text */
+  --highlight-strong:  var(--amber-400);   /* bars, rules, tabs, underlines */
+  --highlight-subtle:  var(--amber-100);   /* faint wash, selection */
+  --highlight-text:    var(--amber-700);   /* amber as text, when needed */
 
   /* -- Semantic: Actions (filled buttons) -- */
   --action-primary:        var(--green-600);

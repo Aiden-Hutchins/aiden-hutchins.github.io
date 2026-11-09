@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="light">
   <title>Aiden Hutchins — Cybersecurity</title>
   <meta name="description" content="Aiden Hutchins: cybersecurity student at Indiana Tech focused on open-source intelligence, digital forensics, and investigative work.">
+  <script src="/assets/intro.js"></script>
   <link rel="stylesheet" href="/assets/fonts.css">
   <link rel="stylesheet" href="/assets/tokens.css">
   <link rel="stylesheet" href="/assets/base.css">
@@ -15,18 +16,41 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Folder intro (only shown while html.intro-active is set). The back sits
+       behind the live page and the front flap in front of it, so the page
+       appears to come out of the folder. -->
+  <div class="intro-layer intro-layer--back" aria-hidden="true">
+    <div class="folder-scale">
+      <div class="folder-stage">
+        <div class="folder-paper folder-paper--1"></div>
+        <div class="folder-paper folder-paper--2"></div>
+        <div class="folder-back"><div class="folder-tab">AH&nbsp;—&nbsp;01</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="intro-layer intro-layer--front" aria-hidden="true">
+    <div class="folder-scale">
+      <div class="folder-stage">
+        <div class="folder-front"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-root">
+
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__name" href="#top">Aiden Hutchins</a>
       <nav class="site-nav" aria-label="Sections">
+        <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#competitions">Competitions</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+        <a class="site-nav__contact" href="#contact">Contact</a>
       </nav>
-      <a class="btn btn--primary btn--sm site-header__cta" href="/assets/resume.pdf">Resume</a>
+      <a class="btn btn--primary btn--sm site-header__cta" href="#contact">Get in touch</a>
     </div>
   </header>
 
@@ -34,9 +58,9 @@
 
     <!-- ── First screen ─────────────────────────────── -->
     <section class="hero" id="top" aria-labelledby="hero-name">
-      <div class="hero__text">
-        <h1 id="hero-name" class="hero__name">Aiden Hutchins</h1>
-        <p class="hero__focus">Cybersecurity student at Indiana Tech (graduating Dec 2027) with a focus on open-source intelligence, digital forensics, and investigative work.</p>
+      <div class="hero__text" data-redact-group="load">
+        <h1 id="hero-name" class="hero__name redact redact--delay-1">Aiden Hutchins</h1>
+        <p class="hero__focus redact redact--delay-2">Cybersecurity student at Indiana Tech (graduating Dec 2027) with a focus on <mark>open-source intelligence</mark>, <mark>digital forensics</mark>, and <mark>investigative work</mark>.</p>
         <ul class="button-row">
           <li><a class="btn btn--primary" href="/assets/resume.pdf">Resume</a></li>
           <li><a class="btn" href="https://www.linkedin.com/in/aiden-hutchins/">LinkedIn</a></li>
@@ -46,6 +70,61 @@
       <div class="hero__photo">
         <img src="/assets/img/aiden.webp" width="400" height="400" alt="Aiden Hutchins">
       </div>
+    </section>
+
+    <!-- ── About ────────────────────────────────────── -->
+    <!-- DRAFT COPY: adapted from your earlier draft and resume. Rewrite in your voice. -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <h2 class="section__title" id="about-title">About</h2>
+      <div class="about">
+        <div class="about__text">
+          <p class="about__lede">The investigative side of security.</p>
+          <p>I’m a cybersecurity student at Indiana Institute of Technology and a security analyst at Indiana Cyber Network, based in Fort Wayne, Indiana. Day to day I run vulnerability assessments and map client environments to NIST standards, but the work I’m drawn to is investigative: following public information to see what it actually reveals, and documenting it so someone else can verify every step.</p>
+          <p>That interest drives my independent OSINT work, including a dedicated investigation workstation built around Michael Bazzell’s methodology, and the public-facing guidance I write for the Indiana Executive Council on Cybersecurity. I’m working toward investigative and intelligence roles in government.</p>
+        </div>
+        <dl class="facts" aria-label="Quick facts">
+          <div class="facts__row"><dt>Based in</dt><dd>Fort Wayne, IN</dd></div>
+          <div class="facts__row"><dt>Currently</dt><dd>Security Analyst, Indiana Cyber Network</dd></div>
+          <div class="facts__row"><dt>Education</dt><dd>Honors B.S. Cybersecurity, Dec 2027</dd></div>
+          <div class="facts__row"><dt>Status</dt><dd>U.S. citizen, clearance-eligible</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ── Focus areas ──────────────────────────────── -->
+    <!-- DRAFT COPY: check each description against what you'd claim in an interview. -->
+    <section class="section section--band" id="focus" aria-labelledby="focus-title">
+      <h2 class="section__title" id="focus-title">Focus areas</h2>
+      <ul class="files">
+        <li class="file">
+          <p class="file__tab">FILE / OSINT</p>
+          <div class="file__body">
+            <h3 class="file__title">Open-Source Intelligence</h3>
+            <p>Mapping what public information reveals about a person or organization: domains, personnel, metadata, and the details people don’t realize are searchable.</p>
+          </div>
+        </li>
+        <li class="file">
+          <p class="file__tab">FILE / FORENSICS</p>
+          <div class="file__body">
+            <h3 class="file__title">Digital Forensics</h3>
+            <p>Acquiring and examining digital evidence with a documented process, so every finding can be traced back to its source.</p>
+          </div>
+        </li>
+        <li class="file">
+          <p class="file__tab">FILE / ANALYSIS</p>
+          <div class="file__body">
+            <h3 class="file__title">Investigative Reporting</h3>
+            <p>Turning collected information into structured, verifiable findings, the same discipline behind my client assessments and public guidance.</p>
+          </div>
+        </li>
+        <li class="file">
+          <p class="file__tab">FILE / GRC</p>
+          <div class="file__body">
+            <h3 class="file__title">Assessment &amp; Compliance</h3>
+            <p>Vulnerability assessments and NIST CSF / 800-53 mapping at Indiana Cyber Network, grounding investigative work in how organizations actually operate.</p>
+          </div>
+        </li>
+      </ul>
     </section>
 
     <!-- ── Experience ───────────────────────────────── -->
@@ -118,7 +197,7 @@
     </section>
 
     <!-- ── Competitions ─────────────────────────────── -->
-    <section class="section" id="competitions" aria-labelledby="competitions-title">
+    <section class="section section--band" id="competitions" aria-labelledby="competitions-title">
       <h2 class="section__title" id="competitions-title">Competitions</h2>
       <ul class="results">
         <li class="result">
@@ -158,31 +237,34 @@
     </section>
 
     <!-- ── Skills ───────────────────────────────────── -->
-    <section class="section" id="skills" aria-labelledby="skills-title">
+    <section class="section section--band" id="skills" aria-labelledby="skills-title">
       <h2 class="section__title" id="skills-title">Skills</h2>
-      <div class="skills">
-        <div class="skill-group">
-          <h3 class="skill-group__name">Systems</h3>
-          <ul class="tags">
-            <li>Microsoft Suite</li><li>Google Workspace</li><li>Windows</li><li>Linux</li>
-            <li>MFA / SSO administration</li><li>Bash</li><li>Python</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3 class="skill-group__name">Frameworks</h3>
-          <ul class="tags">
-            <li>Governance, Risk &amp; Compliance</li><li>NIST CSF</li><li>NIST 800-53</li>
-            <li>Vulnerability assessment methodology</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3 class="skill-group__name">Professional</h3>
-          <ul class="tags">
-            <li>Technical writing</li><li>Communication</li><li>Leadership</li>
-            <li>Attention to detail</li><li>Training &amp; mentorship</li><li>Problem-solving</li>
-          </ul>
-        </div>
-      </div>
+      <ol class="phases">
+        <li class="phase">
+          <p class="phase__num">01</p>
+          <h3 class="phase__name">Collect</h3>
+          <p class="phase__desc">Gathering information and evidence</p>
+          <ul class="tags"><li>OSINT methodology</li><li>Debian Linux investigation VM</li><li>System reconnaissance</li><li>Data acquisition</li></ul>
+        </li>
+        <li class="phase">
+          <p class="phase__num">02</p>
+          <h3 class="phase__name">Analyze</h3>
+          <p class="phase__desc">Making sense of what was collected</p>
+          <ul class="tags"><li>Vulnerability assessment</li><li>NIST CSF</li><li>NIST 800-53</li><li>Bash</li><li>Python</li></ul>
+        </li>
+        <li class="phase">
+          <p class="phase__num">03</p>
+          <h3 class="phase__name">Report</h3>
+          <p class="phase__desc">Communicating findings others can verify</p>
+          <ul class="tags"><li>Technical writing</li><li>Structured assessments</li><li>Public-facing publications</li><li>Training &amp; mentorship</li></ul>
+        </li>
+        <li class="phase">
+          <p class="phase__num">04</p>
+          <h3 class="phase__name">Defend</h3>
+          <p class="phase__desc">Keeping systems and accounts sound</p>
+          <ul class="tags"><li>Windows &amp; Linux environments</li><li>Linux hardening</li><li>MFA / SSO administration</li><li>Microsoft Suite</li><li>Google Workspace</li></ul>
+        </li>
+      </ol>
     </section>
 
     <!-- ── Education ────────────────────────────────── -->
@@ -214,11 +296,54 @@
 
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <p>© 2026 Aiden Hutchins. Fort Wayne, IN.</p>
-      <a href="#top">Back to top</a>
+  <footer class="hs-footer">
+    <div class="hs-footer__inner">
+      <div class="hs-footer__top">
+
+        <div class="hs-brand">
+          <p class="hs-brand__name">Aiden Hutchins</p>
+          <a class="hs-mark" href="#top" aria-label="HutchInsight, back to top">
+          <span class="hs-icon" aria-hidden="true">
+            <svg data-icon="name" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+            <svg data-icon="site" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg>
+            <svg data-icon="insight" viewBox="0 0 24 24"><path d="M12 5a3 3 0 0 0-5.6-1.5A3 3 0 0 0 4 8a3 3 0 0 0 0 5 3.5 3.5 0 0 0 3 5.5A3 3 0 0 0 12 19z"/><path d="M12 5a3 3 0 0 1 5.6-1.5A3 3 0 0 1 20 8a3 3 0 0 1 0 5 3.5 3.5 0 0 1-3 5.5A3 3 0 0 1 12 19z"/><path d="M12 5v14"/></svg>
+            <svg data-icon="sight" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+          </span>
+            <span class="hs-word" aria-hidden="true"></span>
+          </a>
+          <!-- Descriptor line goes here once written:
+               <p class="hs-brand__desc">…</p> -->
+          <p class="hs-brand__doc"><a href="/assets/resume.pdf">Download resume (PDF)</a></p>
+        </div>
+
+        <nav class="hs-col" aria-label="Footer: sections">
+          <h2 class="hs-col__title">Navigate</h2>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#competitions">Competitions</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+          </ul>
+        </nav>
+
+        <div class="hs-col">
+          <h2 class="hs-col__title">Connect</h2>
+          <ul>
+            <li><a data-email-user="aidenryanhutchins" data-email-domain="gmail.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/aiden-hutchins/">LinkedIn</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="hs-footer__bottom">
+        <p>© 2026 Aiden Hutchins. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  </div><!-- /#site-root -->
 </body>
 </html>
