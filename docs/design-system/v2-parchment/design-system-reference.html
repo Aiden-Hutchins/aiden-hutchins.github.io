@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aiden Hutchins Portfolio — Design System v2 (Parchment)</title>
+<!-- Fonts load from the site's self-hosted copies. Path assumes this file lives at
+     docs/design-system/v2-parchment/ in the repo; if opened elsewhere, fallback fonts are used. -->
+<link rel="stylesheet" href="../../../public/assets/fonts.css">
+<link rel="stylesheet" href="design_sys.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;background:var(--bg-primary);color:var(--text-primary);font-family:var(--font-primary);font-size:var(--fs-body);line-height:var(--lh-body);-webkit-font-smoothing:antialiased;}
+p,h1,h2,h3{margin:0;}
+code{font-family:var(--font-mono);font-size:var(--fs-mono-sm);color:var(--text-primary);}
+.mono-sm{font-family:var(--font-mono);font-size:var(--fs-mono-sm);line-height:var(--lh-mono-sm);color:var(--text-tertiary);}
+.page{max-width:1120px;margin:0 auto;padding:var(--space-12) var(--space-8);}
+.header{padding-bottom:var(--space-10);margin-bottom:var(--space-11);border-bottom:2px solid var(--text-primary);}
+.header__tag{display:inline-block;margin-bottom:var(--space-6);padding:var(--space-1) var(--space-3);border:1.5px solid var(--accent-stamp);border-radius:var(--radius-sm);color:var(--accent-stamp);font-family:var(--font-mono);font-size:var(--fs-mono-sm);font-weight:var(--weight-bold);letter-spacing:.06em;transform:rotate(-1.5deg);}
+.header h1{font-size:var(--fs-display);line-height:var(--lh-display);font-weight:var(--weight-bold);letter-spacing:-.015em;margin-bottom:var(--space-3);}
+.header p{font-size:var(--fs-h4);line-height:var(--lh-h4);color:var(--text-secondary);}
+.section{padding-bottom:var(--space-11);margin-bottom:var(--space-11);border-bottom:1px solid var(--border-default);}
+.section:last-child{border-bottom:0;}
+.section__num{font-family:var(--font-mono);font-size:var(--fs-mono-sm);color:var(--accent-primary);margin-bottom:var(--space-3);}
+.section__title{font-size:var(--fs-h2);line-height:var(--lh-h2);font-weight:var(--weight-bold);margin-bottom:var(--space-3);}
+.section__desc{max-width:720px;color:var(--text-secondary);margin-bottom:var(--space-8);}
+.type-row{display:grid;grid-template-columns:180px 1fr;gap:var(--space-8);align-items:baseline;padding:var(--space-5) 0;border-top:1px solid var(--border-subtle);}
+.type-row__label{font-weight:var(--weight-medium);}
+.group+.group{margin-top:var(--space-9);}
+.group__title{font-size:var(--fs-h4);line-height:var(--lh-h4);font-weight:var(--weight-bold);}
+.group__desc{color:var(--text-secondary);margin:var(--space-2) 0 var(--space-5);}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:var(--space-5);}
+.swatch__chip{height:72px;border-radius:var(--radius-md);border:1px solid var(--border-default);margin-bottom:var(--space-3);}
+.swatch__name{font-weight:var(--weight-medium);}
+.swatch__hex{font-family:var(--font-mono);font-size:var(--fs-mono-sm);color:var(--text-tertiary);}
+table{width:100%;border-collapse:collapse;}
+th{text-align:left;font-size:var(--fs-label);font-weight:var(--weight-medium);color:var(--text-tertiary);padding:var(--space-3);border-bottom:1px solid var(--border-strong);}
+td{padding:var(--space-3);border-bottom:1px solid var(--border-subtle);vertical-align:middle;}
+.table-wrap{overflow-x:auto;}
+.dot{display:inline-block;width:14px;height:14px;border-radius:var(--radius-sm);border:1px solid var(--border-strong);margin-right:var(--space-3);vertical-align:-2px;}
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-5);}
+.signal{display:flex;gap:var(--space-4);padding:var(--space-5);background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);}
+.signal__bar{width:4px;border-radius:var(--radius-full);}
+.signal__name{font-weight:var(--weight-bold);font-size:var(--fs-body-lg);}
+.space-row{display:grid;grid-template-columns:110px 60px 1fr;align-items:center;gap:var(--space-5);padding:var(--space-2) 0;}
+.space-bar{height:12px;background:var(--accent-primary);border-radius:var(--radius-sm);}
+.radii{display:flex;flex-wrap:wrap;gap:var(--space-8);}
+.radius__box{width:88px;height:88px;background:var(--bg-surface);border:1.5px solid var(--text-primary);margin-bottom:var(--space-3);}
+.shadows{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:var(--space-8);}
+.shadow{height:110px;display:flex;align-items:flex-end;padding:var(--space-4);background:var(--bg-surface);border-radius:var(--radius-lg);}
+.demo{display:flex;flex-wrap:wrap;gap:var(--space-5);align-items:center;}
+.btn{display:inline-flex;padding:var(--space-3) var(--space-6);border:1px solid var(--border-strong);border-radius:var(--radius-md);background:var(--bg-surface);color:var(--text-primary);font:inherit;font-weight:var(--weight-medium);text-decoration:none;}
+.btn--primary{background:var(--action-primary);border-color:var(--action-primary);color:var(--text-inverse);}
+.tag{padding:var(--space-2) var(--space-4);background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-sm);color:var(--text-secondary);}
+.link{color:var(--accent-primary);}
+.card{max-width:320px;padding:var(--space-7);background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);}
+.card__head{font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:var(--weight-bold);color:var(--accent-primary);margin-bottom:var(--space-3);}
+.card p{color:var(--text-secondary);}
+.stamp{display:inline-block;padding:var(--space-1) var(--space-3);border:1.5px solid var(--accent-stamp);border-radius:var(--radius-sm);color:var(--accent-stamp);font-family:var(--font-mono);font-size:var(--fs-mono-sm);font-weight:var(--weight-bold);letter-spacing:.06em;}
+.sw-paper-50{background:var(--paper-50);}.sw-paper-100{background:var(--paper-100);}.sw-paper-200{background:var(--paper-200);}.sw-paper-300{background:var(--paper-300);}.sw-paper-400{background:var(--paper-400);}.sw-paper-500{background:var(--paper-500);}.sw-paper-600{background:var(--paper-600);}.sw-ink-900{background:var(--ink-900);}.sw-ink-800{background:var(--ink-800);}.sw-ink-700{background:var(--ink-700);}.sw-ink-600{background:var(--ink-600);}.sw-ink-500{background:var(--ink-500);}.sw-ink-400{background:var(--ink-400);}.sw-ink-300{background:var(--ink-300);}.sw-ink-200{background:var(--ink-200);}.sw-green-50{background:var(--green-50);}.sw-green-100{background:var(--green-100);}.sw-green-300{background:var(--green-300);}.sw-green-500{background:var(--green-500);}.sw-green-600{background:var(--green-600);}.sw-green-700{background:var(--green-700);}.sw-green-800{background:var(--green-800);}.sw-stamp-50{background:var(--stamp-50);}.sw-stamp-100{background:var(--stamp-100);}.sw-stamp-500{background:var(--stamp-500);}.sw-stamp-600{background:var(--stamp-600);}.sem-bg-primary{background:var(--bg-primary);}.sem-bg-secondary{background:var(--bg-secondary);}.sem-bg-surface{background:var(--bg-surface);}.sem-bg-elevated{background:var(--bg-elevated);}.sem-text-primary{background:var(--text-primary);}.sem-text-secondary{background:var(--text-secondary);}.sem-text-tertiary{background:var(--text-tertiary);}.sem-text-inverse{background:var(--text-inverse);}.sem-accent-primary{background:var(--accent-primary);}.sem-accent-hover{background:var(--accent-hover);}.sem-accent-subtle{background:var(--accent-subtle);}.sem-accent-stamp{background:var(--accent-stamp);}.sem-action-primary{background:var(--action-primary);}.sem-action-primary-hover{background:var(--action-primary-hover);}.sem-border-default{background:var(--border-default);}.sem-border-subtle{background:var(--border-subtle);}.sem-border-strong{background:var(--border-strong);}.sig-status-success{background:var(--status-success);} .sig-status-success-t{color:var(--status-success);}.sig-status-warning{background:var(--status-warning);} .sig-status-warning-t{color:var(--status-warning);}.sig-status-error{background:var(--status-error);} .sig-status-error-t{color:var(--status-error);}.sig-status-info{background:var(--status-info);} .sig-status-info-t{color:var(--status-info);}.ts-display{font-size:var(--fs-display);line-height:var(--lh-display);font-weight:var(--weight-bold);}.ts-h1{font-size:var(--fs-h1);line-height:var(--lh-h1);font-weight:var(--weight-bold);}.ts-h2{font-size:var(--fs-h2);line-height:var(--lh-h2);font-weight:var(--weight-bold);}.ts-h3{font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:var(--weight-bold);}.ts-h4{font-size:var(--fs-h4);line-height:var(--lh-h4);font-weight:var(--weight-bold);}.ts-body-lg{font-size:var(--fs-body-lg);line-height:var(--lh-body-lg);font-weight:var(--weight-regular);}.ts-body{font-size:var(--fs-body);line-height:var(--lh-body);font-weight:var(--weight-regular);}.ts-body-sm{font-size:var(--fs-body-sm);line-height:var(--lh-body-sm);font-weight:var(--weight-regular);}.ts-caption{font-size:var(--fs-caption);line-height:var(--lh-caption);font-weight:var(--weight-regular);}.ts-mono{font-family:var(--font-mono);font-size:var(--fs-mono);line-height:var(--lh-mono);}.ts-mono-sm{font-family:var(--font-mono);font-size:var(--fs-mono-sm);line-height:var(--lh-mono-sm);}.sp-1{width:var(--space-1);}.sp-2{width:var(--space-2);}.sp-3{width:var(--space-3);}.sp-4{width:var(--space-4);}.sp-5{width:var(--space-5);}.sp-6{width:var(--space-6);}.sp-7{width:var(--space-7);}.sp-8{width:var(--space-8);}.sp-9{width:var(--space-9);}.sp-10{width:var(--space-10);}.sp-11{width:var(--space-11);}.sp-12{width:var(--space-12);}.rd-none{border-radius:var(--radius-none);}.rd-sm{border-radius:var(--radius-sm);}.rd-md{border-radius:var(--radius-md);}.rd-lg{border-radius:var(--radius-lg);}.rd-xl{border-radius:var(--radius-xl);}.rd-2xl{border-radius:var(--radius-2xl);}.rd-full{border-radius:var(--radius-full);}.sh-xs{box-shadow:var(--shadow-xs);}.sh-sm{box-shadow:var(--shadow-sm);}.sh-md{box-shadow:var(--shadow-md);}.sh-lg{box-shadow:var(--shadow-lg);}.sh-xl{box-shadow:var(--shadow-xl);}
+@media (max-width:700px){.type-row{grid-template-columns:1fr;gap:var(--space-2);}.page{padding:var(--space-10) var(--space-6);}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="header">
+    <span class="header__tag">SYS_REF // DESIGN_V2</span>
+    <h1>Design System</h1>
+    <p>Personal portfolio style guide and token reference, v2 “Parchment”.</p>
+  </header>
+
+  <section class="section">
+    <p class="section__num">01 // Typography</p>
+    <h2 class="section__title">Typography Scale</h2>
+    <p class="section__desc">Unchanged from v1. Space Grotesk carries headings, body, and UI; Space Mono is reserved for technical output such as hashes, timestamps, and data.</p>
+    <div class="type-row"><div class="type-row__meta"><p class="type-row__label">Display</p><p class="mono-sm">48px / 56px</p></div><p class="ts-display">Case File Overview</p></div><div class="type-row"><div class="type-row__meta"><p class="type-row__label">H1</p><p class="mono-sm">36px / 44px</p></div><p class="ts-h1">Investigation Summary</p></div><div class="type-row"><div class="type-row__meta"><p class="type-row__label">H2</p><p class="mono-sm">28px / 36px</p></div><p class="ts-h2">Evidence Analysis Ledger</p></div><div class="type-row"><div class="type-row__meta"><p class="type-row__label">H3</p><p class="mono-sm">22px / 28px</p></div><p class="ts-h3">Source Attribution Logs</p></div><div class="type-row"><div class="type-row__meta"><p class="type-row__label">H4</p><p class="mono-sm">18px / 24px</p></div><p class="ts-h4">Collection Notes</p></div><div class="type-row"><div class="type-row__meta"><p class="type-row__label">Body Large</p><p class="mono-sm">16px / 24px</p></div><p class="ts-body-lg">Open-source intelligence gathering and forensic analysis, documented so findings can be verified.</p></div><div class="type-row"><div class="type-row__meta"><p class="type-row__label">Body</p><p class="mono-sm">14px / 20px</p></div><p class="ts-body">Structured methodology for collecting, processing, and validating publicly available information.</p></div><div class="type-row"><div class="type-row__meta"><p class="type-row__label">Body Small</p><p class="mono-sm">12px / 16px</p></div><p class="ts-body-sm">Cross-referencing indicators across independent sources before drawing conclusions.</p></div><div class="type-row"><div class="type-row__meta"><p class="type-row__label">Caption</p><p class="mono-sm">11px / 14px</p></div><p class="ts-caption">Last revised November 2026</p></div><div class="type-row"><div class="type-row__meta"><p class="type-row__label">Mono</p><p class="mono-sm">13px / 20px</p></div><p class="ts-mono">SHA-256  9f2d3b8c 2ae104fa 115c7e01</p></div><div class="type-row"><div class="type-row__meta"><p class="type-row__label">Mono Small</p><p class="mono-sm">11px / 16px</p></div><p class="ts-mono-sm">2026-11-09T17:36:51Z  status=200</p></div>
+  </section>
+
+  <section class="section">
+    <p class="section__num">02 // Color</p>
+    <h2 class="section__title">Color Palette Swatches</h2>
+    <p class="section__desc">Four families replace v1’s slate and blue: warm paper for surfaces, ink for text, field green as the single working accent, and stamp red for rare emphasis.</p>
+    <div class="group"><h3 class="group__title">Paper</h3><p class="group__desc">Page, surfaces, folders, and rules.</p><div class="swatches"><div class="swatch"><div class="swatch__chip sw-paper-50"></div><p class="swatch__name">paper-50</p><p class="swatch__hex">#F7F6F2</p></div><div class="swatch"><div class="swatch__chip sw-paper-100"></div><p class="swatch__name">paper-100</p><p class="swatch__hex">#EFEEE9</p></div><div class="swatch"><div class="swatch__chip sw-paper-200"></div><p class="swatch__name">paper-200</p><p class="swatch__hex">#EAE6D8</p></div><div class="swatch"><div class="swatch__chip sw-paper-300"></div><p class="swatch__name">paper-300</p><p class="swatch__hex">#DEDACB</p></div><div class="swatch"><div class="swatch__chip sw-paper-400"></div><p class="swatch__name">paper-400</p><p class="swatch__hex">#D7D4C9</p></div><div class="swatch"><div class="swatch__chip sw-paper-500"></div><p class="swatch__name">paper-500</p><p class="swatch__hex">#BEBBAE</p></div><div class="swatch"><div class="swatch__chip sw-paper-600"></div><p class="swatch__name">paper-600</p><p class="swatch__hex">#9E9A8B</p></div></div></div><div class="group"><h3 class="group__title">Ink</h3><p class="group__desc">Text, heaviest to faintest. 300 and below are decorative only.</p><div class="swatches"><div class="swatch"><div class="swatch__chip sw-ink-900"></div><p class="swatch__name">ink-900</p><p class="swatch__hex">#16181A</p></div><div class="swatch"><div class="swatch__chip sw-ink-800"></div><p class="swatch__name">ink-800</p><p class="swatch__hex">#24272A</p></div><div class="swatch"><div class="swatch__chip sw-ink-700"></div><p class="swatch__name">ink-700</p><p class="swatch__hex">#34383C</p></div><div class="swatch"><div class="swatch__chip sw-ink-600"></div><p class="swatch__name">ink-600</p><p class="swatch__hex">#474B50</p></div><div class="swatch"><div class="swatch__chip sw-ink-500"></div><p class="swatch__name">ink-500</p><p class="swatch__hex">#585D62</p></div><div class="swatch"><div class="swatch__chip sw-ink-400"></div><p class="swatch__name">ink-400</p><p class="swatch__hex">#64686C</p></div><div class="swatch"><div class="swatch__chip sw-ink-300"></div><p class="swatch__name">ink-300</p><p class="swatch__hex">#8A8E92</p></div><div class="swatch"><div class="swatch__chip sw-ink-200"></div><p class="swatch__name">ink-200</p><p class="swatch__hex">#B4B7B9</p></div></div></div><div class="group"><h3 class="group__title">Field Green</h3><p class="group__desc">Primary accent, links, and filled actions.</p><div class="swatches"><div class="swatch"><div class="swatch__chip sw-green-50"></div><p class="swatch__name">green-50</p><p class="swatch__hex">#E6ECE8</p></div><div class="swatch"><div class="swatch__chip sw-green-100"></div><p class="swatch__name">green-100</p><p class="swatch__hex">#D3DED7</p></div><div class="swatch"><div class="swatch__chip sw-green-300"></div><p class="swatch__name">green-300</p><p class="swatch__hex">#8FA89C</p></div><div class="swatch"><div class="swatch__chip sw-green-500"></div><p class="swatch__name">green-500</p><p class="swatch__hex">#3E6656</p></div><div class="swatch"><div class="swatch__chip sw-green-600"></div><p class="swatch__name">green-600</p><p class="swatch__hex">#2B4C3F</p></div><div class="swatch"><div class="swatch__chip sw-green-700"></div><p class="swatch__name">green-700</p><p class="swatch__hex">#1F3A30</p></div><div class="swatch"><div class="swatch__chip sw-green-800"></div><p class="swatch__name">green-800</p><p class="swatch__hex">#152A22</p></div></div></div><div class="group"><h3 class="group__title">Stamp Red</h3><p class="group__desc">Rare emphasis: marks and alerts. Use sparingly.</p><div class="swatches"><div class="swatch"><div class="swatch__chip sw-stamp-50"></div><p class="swatch__name">stamp-50</p><p class="swatch__hex">#F5E6E2</p></div><div class="swatch"><div class="swatch__chip sw-stamp-100"></div><p class="swatch__name">stamp-100</p><p class="swatch__hex">#EBCBC3</p></div><div class="swatch"><div class="swatch__chip sw-stamp-500"></div><p class="swatch__name">stamp-500</p><p class="swatch__hex">#A13D2D</p></div><div class="swatch"><div class="swatch__chip sw-stamp-600"></div><p class="swatch__name">stamp-600</p><p class="swatch__hex">#85301F</p></div></div></div>
+  </section>
+
+  <section class="section">
+    <p class="section__num">03 // Semantic</p>
+    <h2 class="section__title">Semantic Map</h2>
+    <p class="section__desc">Same semantic names as v1, so site styles don’t change when the palette does. Ratios are WCAG contrast; 4.5 : 1 is the minimum for body text.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Token</th><th>Maps to</th><th>Value</th><th>Contrast</th></tr></thead>
+      <tbody><tr><td><span class="dot sem-bg-primary"></span><code>--bg-primary</code></td><td><code>var(--paper-100)</code></td><td class="mono-sm">#EFEEE9</td><td class="mono-sm">&nbsp;</td></tr><tr><td><span class="dot sem-bg-secondary"></span><code>--bg-secondary</code></td><td><code>var(--paper-200)</code></td><td class="mono-sm">#EAE6D8</td><td class="mono-sm">&nbsp;</td></tr><tr><td><span class="dot sem-bg-surface"></span><code>--bg-surface</code></td><td><code>var(--paper-50)</code></td><td class="mono-sm">#F7F6F2</td><td class="mono-sm">&nbsp;</td></tr><tr><td><span class="dot sem-bg-elevated"></span><code>--bg-elevated</code></td><td><code>var(--paper-200)</code></td><td class="mono-sm">#EAE6D8</td><td class="mono-sm">&nbsp;</td></tr><tr><td><span class="dot sem-text-primary"></span><code>--text-primary</code></td><td><code>var(--ink-900)</code></td><td class="mono-sm">#16181A</td><td class="mono-sm">15.3 : 1 on page &nbsp;/&nbsp; 14.2 : 1 on elevated</td></tr><tr><td><span class="dot sem-text-secondary"></span><code>--text-secondary</code></td><td><code>var(--ink-600)</code></td><td class="mono-sm">#474B50</td><td class="mono-sm">7.6 : 1 on page &nbsp;/&nbsp; 7.0 : 1 on elevated</td></tr><tr><td><span class="dot sem-text-tertiary"></span><code>--text-tertiary</code></td><td><code>var(--ink-400)</code></td><td class="mono-sm">#64686C</td><td class="mono-sm">4.8 : 1 on page &nbsp;/&nbsp; 4.5 : 1 on elevated</td></tr><tr><td><span class="dot sem-text-inverse"></span><code>--text-inverse</code></td><td><code>var(--paper-50)</code></td><td class="mono-sm">#F7F6F2</td><td class="mono-sm">8.8 : 1 on action-primary</td></tr><tr><td><span class="dot sem-accent-primary"></span><code>--accent-primary</code></td><td><code>var(--green-600)</code></td><td class="mono-sm">#2B4C3F</td><td class="mono-sm">8.2 : 1 on page &nbsp;/&nbsp; 7.6 : 1 on elevated</td></tr><tr><td><span class="dot sem-accent-hover"></span><code>--accent-hover</code></td><td><code>var(--green-700)</code></td><td class="mono-sm">#1F3A30</td><td class="mono-sm">10.6 : 1 on page &nbsp;/&nbsp; 9.9 : 1 on elevated</td></tr><tr><td><span class="dot sem-accent-subtle"></span><code>--accent-subtle</code></td><td><code>var(--green-50)</code></td><td class="mono-sm">#E6ECE8</td><td class="mono-sm">&nbsp;</td></tr><tr><td><span class="dot sem-accent-stamp"></span><code>--accent-stamp</code></td><td><code>var(--stamp-500)</code></td><td class="mono-sm">#A13D2D</td><td class="mono-sm">5.6 : 1 on page &nbsp;/&nbsp; 5.2 : 1 on elevated</td></tr><tr><td><span class="dot sem-action-primary"></span><code>--action-primary</code></td><td><code>var(--green-600)</code></td><td class="mono-sm">#2B4C3F</td><td class="mono-sm">&nbsp;</td></tr><tr><td><span class="dot sem-action-primary-hover"></span><code>--action-primary-hover</code></td><td><code>var(--green-700)</code></td><td class="mono-sm">#1F3A30</td><td class="mono-sm">&nbsp;</td></tr><tr><td><span class="dot sem-border-default"></span><code>--border-default</code></td><td><code>var(--paper-400)</code></td><td class="mono-sm">#D7D4C9</td><td class="mono-sm">&nbsp;</td></tr><tr><td><span class="dot sem-border-subtle"></span><code>--border-subtle</code></td><td><code>var(--paper-300)</code></td><td class="mono-sm">#DEDACB</td><td class="mono-sm">&nbsp;</td></tr><tr><td><span class="dot sem-border-strong"></span><code>--border-strong</code></td><td><code>var(--paper-500)</code></td><td class="mono-sm">#BEBBAE</td><td class="mono-sm">&nbsp;</td></tr></tbody>
+    </table></div>
+  </section>
+
+  <section class="section">
+    <p class="section__num">04 // Signal</p>
+    <h2 class="section__title">Signal Colors</h2>
+    <p class="section__desc">Muted to sit on paper. Each passes 4.5 : 1 on the page background, so it can be used for text, not just fills.</p>
+    <div class="signals"><div class="signal"><span class="signal__bar sig-status-success"></span><div><p class="signal__name sig-status-success-t">Success</p><p class="mono-sm">--status-success &nbsp; #3E6656 &nbsp; 5.6 : 1</p></div></div><div class="signal"><span class="signal__bar sig-status-warning"></span><div><p class="signal__name sig-status-warning-t">Warning</p><p class="mono-sm">--status-warning &nbsp; #8A5D12 &nbsp; 4.9 : 1</p></div></div><div class="signal"><span class="signal__bar sig-status-error"></span><div><p class="signal__name sig-status-error-t">Error</p><p class="mono-sm">--status-error &nbsp; #A13D2D &nbsp; 5.6 : 1</p></div></div><div class="signal"><span class="signal__bar sig-status-info"></span><div><p class="signal__name sig-status-info-t">Info</p><p class="mono-sm">--status-info &nbsp; #3B5B78 &nbsp; 6.1 : 1</p></div></div></div>
+  </section>
+
+  <section class="section">
+    <p class="section__num">05 // Spacing</p>
+    <h2 class="section__title">Linear Spacing Scale</h2>
+    <p class="section__desc">Unchanged from v1.</p>
+    <div class="space-row"><code>--space-1</code><span class="mono-sm">2px</span><span class="space-bar sp-1"></span></div><div class="space-row"><code>--space-2</code><span class="mono-sm">4px</span><span class="space-bar sp-2"></span></div><div class="space-row"><code>--space-3</code><span class="mono-sm">8px</span><span class="space-bar sp-3"></span></div><div class="space-row"><code>--space-4</code><span class="mono-sm">12px</span><span class="space-bar sp-4"></span></div><div class="space-row"><code>--space-5</code><span class="mono-sm">16px</span><span class="space-bar sp-5"></span></div><div class="space-row"><code>--space-6</code><span class="mono-sm">20px</span><span class="space-bar sp-6"></span></div><div class="space-row"><code>--space-7</code><span class="mono-sm">24px</span><span class="space-bar sp-7"></span></div><div class="space-row"><code>--space-8</code><span class="mono-sm">32px</span><span class="space-bar sp-8"></span></div><div class="space-row"><code>--space-9</code><span class="mono-sm">40px</span><span class="space-bar sp-9"></span></div><div class="space-row"><code>--space-10</code><span class="mono-sm">48px</span><span class="space-bar sp-10"></span></div><div class="space-row"><code>--space-11</code><span class="mono-sm">64px</span><span class="space-bar sp-11"></span></div><div class="space-row"><code>--space-12</code><span class="mono-sm">80px</span><span class="space-bar sp-12"></span></div>
+  </section>
+
+  <section class="section">
+    <p class="section__num">06 // Radii</p>
+    <h2 class="section__title">Friction Envelopes</h2>
+    <p class="section__desc">Tightened from v1. Paper and index cards have nearly square corners, so the largest working radius is 8px.</p>
+    <div class="radii"><div class="radius"><div class="radius__box rd-none"></div><code>--radius-none</code><p class="mono-sm">0</p></div><div class="radius"><div class="radius__box rd-sm"></div><code>--radius-sm</code><p class="mono-sm">2px</p></div><div class="radius"><div class="radius__box rd-md"></div><code>--radius-md</code><p class="mono-sm">3px</p></div><div class="radius"><div class="radius__box rd-lg"></div><code>--radius-lg</code><p class="mono-sm">4px</p></div><div class="radius"><div class="radius__box rd-xl"></div><code>--radius-xl</code><p class="mono-sm">6px</p></div><div class="radius"><div class="radius__box rd-2xl"></div><code>--radius-2xl</code><p class="mono-sm">8px</p></div><div class="radius"><div class="radius__box rd-full"></div><code>--radius-full</code><p class="mono-sm">9999px</p></div></div>
+  </section>
+
+  <section class="section">
+    <p class="section__num">07 // Depth</p>
+    <h2 class="section__title">Shadow Levels</h2>
+    <p class="section__desc">Same structure as v1, tinted with ink instead of slate.</p>
+    <div class="shadows"><div class="shadow sh-xs"><code>--shadow-xs</code></div><div class="shadow sh-sm"><code>--shadow-sm</code></div><div class="shadow sh-md"><code>--shadow-md</code></div><div class="shadow sh-lg"><code>--shadow-lg</code></div><div class="shadow sh-xl"><code>--shadow-xl</code></div></div>
+  </section>
+
+  <section class="section">
+    <p class="section__num">08 // Components</p>
+    <h2 class="section__title">Tokens in Use</h2>
+    <p class="section__desc">How the tokens combine on the site.</p>
+    <div class="demo">
+      <a class="btn btn--primary" href="#">Primary action</a>
+      <a class="btn" href="#">Secondary action</a>
+      <span class="tag">NIST 800-53</span>
+      <a class="link" href="#">Inline link</a>
+      <span class="stamp">VERIFIED</span>
+    </div>
+    <div class="demo" style="margin-top:var(--space-8)">
+      <div class="card"><p class="card__head">1st place</p><p>Card on a raised sheet, with an accent headline and secondary body text.</p></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

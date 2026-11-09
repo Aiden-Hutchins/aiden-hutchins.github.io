@@ -1,4 +1,4 @@
-/* Base layer: reset + token wiring only. Section styles get added as each part is designed. */
+/* Base layer: reset + token wiring only. Section styles live in site.css. */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {

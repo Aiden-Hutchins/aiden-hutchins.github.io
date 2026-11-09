@@ -1,0 +1,151 @@
+/* ============================================================
+   Aiden Hutchins Portfolio — Design System Tokens
+   v2 "Parchment" — case-file paper, ink, field green, stamp red
+   ------------------------------------------------------------
+   Fonts are loaded separately (assets/fonts.css, self-hosted),
+   so this file is identical in public/assets/tokens.css and in
+   docs/design-system/v2-parchment/design_sys.css.
+   Text tokens are checked against WCAG AA (4.5:1) on
+   --bg-primary, --bg-surface and --bg-elevated.
+   ============================================================ */
+
+:root {
+
+  /* -- Font Families -- */
+  --font-primary:    'Space Grotesk', system-ui, sans-serif;
+  --font-mono:       'Space Mono', ui-monospace, monospace;
+
+  /* -- Font Weights -- */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-bold:     700;
+
+  /* -- Individual font-size tokens -- */
+  --fs-display:    48px;
+  --fs-h1:         36px;
+  --fs-h2:         28px;
+  --fs-h3:         22px;
+  --fs-h4:         18px;
+  --fs-body-lg:    16px;
+  --fs-body:       14px;
+  --fs-body-sm:    12px;
+  --fs-label:      12px;
+  --fs-caption:    11px;
+  --fs-mono:       13px;
+  --fs-mono-sm:    11px;
+
+  /* -- Line heights -- */
+  --lh-display:    56px;
+  --lh-h1:         44px;
+  --lh-h2:         36px;
+  --lh-h3:         28px;
+  --lh-h4:         24px;
+  --lh-body-lg:    24px;
+  --lh-body:       20px;
+  --lh-body-sm:    16px;
+  --lh-label:      16px;
+  --lh-caption:    14px;
+  --lh-mono:       20px;
+  --lh-mono-sm:    16px;
+
+  /* -- Paper: page, surfaces, folders, rules -- */
+  --paper-50:   #F7F6F2;   /* raised sheet */
+  --paper-100:  #EFEEE9;   /* page */
+  --paper-200:  #EAE6D8;   /* folder front */
+  --paper-300:  #DEDACB;   /* folder back */
+  --paper-400:  #D7D4C9;   /* rule */
+  --paper-500:  #BEBBAE;   /* strong rule */
+  --paper-600:  #9E9A8B;   /* decorative only */
+
+  /* -- Ink: text, from heaviest to faintest -- */
+  --ink-900:    #16181A;
+  --ink-800:    #24272A;
+  --ink-700:    #34383C;
+  --ink-600:    #474B50;
+  --ink-500:    #585D62;
+  --ink-400:    #64686C;   /* lowest ink that passes AA for body text */
+  --ink-300:    #8A8E92;   /* decorative only (icons, markers) */
+  --ink-200:    #B4B7B9;   /* decorative only */
+
+  /* -- Field Green: primary accent & actions -- */
+  --green-50:   #E6ECE8;
+  --green-100:  #D3DED7;
+  --green-300:  #8FA89C;
+  --green-500:  #3E6656;
+  --green-600:  #2B4C3F;
+  --green-700:  #1F3A30;
+  --green-800:  #152A22;
+
+  /* -- Stamp Red: rare emphasis (marks, alerts) -- */
+  --stamp-50:   #F5E6E2;
+  --stamp-100:  #EBCBC3;
+  --stamp-500:  #A13D2D;
+  --stamp-600:  #85301F;
+
+  /* -- Semantic: Backgrounds -- */
+  --bg-primary:    var(--paper-100);
+  --bg-secondary:  var(--paper-200);
+  --bg-surface:    var(--paper-50);
+  --bg-elevated:   var(--paper-200);
+
+  /* -- Semantic: Text -- */
+  --text-primary:    var(--ink-900);
+  --text-secondary:  var(--ink-600);
+  --text-tertiary:   var(--ink-400);
+  --text-inverse:    var(--paper-50);
+
+  /* -- Semantic: Accent -- */
+  --accent-primary:  var(--green-600);
+  --accent-hover:    var(--green-700);
+  --accent-subtle:   var(--green-50);
+  --accent-stamp:    var(--stamp-500);
+
+  /* -- Semantic: Actions (filled buttons) -- */
+  --action-primary:        var(--green-600);
+  --action-primary-hover:  var(--green-700);
+
+  /* -- Semantic: Borders -- */
+  --border-default:  var(--paper-400);
+  --border-subtle:   var(--paper-300);
+  --border-strong:   var(--paper-500);
+
+  /* -- Status / Signal Colors -- */
+  --status-success:  #3E6656;
+  --status-warning:  #8A5D12;
+  --status-error:    #A13D2D;
+  --status-info:     #3B5B78;
+
+  /* -- Spacing Scale -- */
+  --space-1:   2px;
+  --space-2:   4px;
+  --space-3:   8px;
+  --space-4:   12px;
+  --space-5:   16px;
+  --space-6:   20px;
+  --space-7:   24px;
+  --space-8:   32px;
+  --space-9:   40px;
+  --space-10:  48px;
+  --space-11:  64px;
+  --space-12:  80px;
+
+  /* -- Border Radii (tighter than v1: paper has square-ish corners) -- */
+  --radius-none:  0;
+  --radius-sm:    2px;
+  --radius-md:    3px;
+  --radius-lg:    4px;
+  --radius-xl:    6px;
+  --radius-2xl:   8px;
+  --radius-full:  9999px;
+
+  /* -- Shadows (warm ink tint) -- */
+  --shadow-xs:  0  1px  2px  0    rgba(22, 24, 26, 0.06);
+  --shadow-sm:  0  1px  3px  0    rgba(22, 24, 26, 0.07),
+                0  2px  6px  -1px rgba(22, 24, 26, 0.04);
+  --shadow-md:  0  2px  4px  -1px rgba(22, 24, 26, 0.07),
+                0  6px 16px  -2px rgba(22, 24, 26, 0.08);
+  --shadow-lg:  0  4px  8px  -2px rgba(22, 24, 26, 0.07),
+                0 16px 32px  -4px rgba(22, 24, 26, 0.12);
+  --shadow-xl:  0  8px 12px  -4px rgba(22, 24, 26, 0.08),
+                0 24px 48px  -8px rgba(22, 24, 26, 0.16);
+}

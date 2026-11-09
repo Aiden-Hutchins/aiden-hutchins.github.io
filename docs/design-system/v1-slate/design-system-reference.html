@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Portfolio — Design System</title>
+  <link rel="stylesheet" href="design_sys.css">
+  <style>
+    /* ── Reset & Base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--slate-50);
+      color: var(--slate-900);
+      font-family: var(--font-primary);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ───────────────────────────────────── */
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: var(--space-12) var(--space-8);
+    }
+
+    .section {
+      margin-bottom: var(--space-12);
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border-default);
+      margin-bottom: var(--space-12);
+    }
+
+    /* ── Header ───────────────────────────────────── */
+    .header {
+      margin-bottom: var(--space-12);
+    }
+
+    .header-tag {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono-sm);
+      font-weight: var(--weight-bold);
+      color: var(--slate-500);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+
+    .header-tag .icon {
+      width: 32px;
+      height: 32px;
+      background: var(--slate-900);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-tag .icon svg {
+      width: 18px;
+      height: 18px;
+      fill: white;
+    }
+
+    .header h1 {
+      font-size: var(--fs-display);
+      line-height: var(--lh-display);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--space-3);
+    }
+
+    .header .subtitle {
+      font-size: var(--fs-h4);
+      font-weight: var(--weight-medium);
+      color: var(--text-secondary);
+    }
+
+    /* ── Section Labels ───────────────────────────── */
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: var(--fs-label);
+      font-weight: var(--weight-bold);
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+
+    .section-title {
+      font-size: var(--fs-h2);
+      line-height: var(--lh-h2);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--space-3);
+    }
+
+    .section-desc {
+      font-size: var(--fs-body);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+      max-width: 720px;
+    }
+
+    /* ── Sub-labels ───────────────────────────────── */
+    .sub-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono-sm);
+      font-weight: var(--weight-bold);
+      color: var(--slate-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-5);
+    }
+
+    /* ── Typography Section ───────────────────────── */
+    .font-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-7);
+      margin-bottom: var(--space-8);
+    }
+
+    .font-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-7);
+    }
+
+    .font-card .card-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono-sm);
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-5);
+    }
+
+    .font-card .font-name {
+      font-size: 32px;
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--space-4);
+    }
+
+    .font-card .font-desc {
+      font-size: var(--fs-body);
+      color: var(--text-secondary);
+      line-height: var(--lh-body);
+    }
+
+    .font-card.mono .font-name {
+      font-family: var(--font-mono);
+    }
+
+    .weights-row {
+      display: flex;
+      gap: var(--space-3);
+      margin-bottom: var(--space-8);
+    }
+
+    .weight-chip {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3) var(--space-5);
+      font-size: var(--fs-body);
+    }
+
+    /* Type scale table */
+    .type-scale {
+      width: 100%;
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      align-items: baseline;
+      padding: var(--space-5) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .type-row:last-child { border-bottom: none; }
+
+    .type-meta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .type-meta .name {
+      font-weight: var(--weight-bold);
+      font-size: var(--fs-body);
+    }
+
+    .type-meta .spec {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono-sm);
+      color: var(--text-tertiary);
+    }
+
+    .type-sample {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-8);
+    }
+
+    .type-sample .preview {
+      flex: 1;
+    }
+
+    /* ── Color Swatches ───────────────────────────── */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-8);
+    }
+
+    .swatch-grid.five-col {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .swatch {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .swatch .color-block {
+      height: 72px;
+    }
+
+    .swatch .swatch-info {
+      padding: var(--space-3) var(--space-4);
+      background: white;
+    }
+
+    .swatch .swatch-name {
+      font-weight: var(--weight-bold);
+      font-size: var(--fs-body);
+      margin-bottom: var(--space-1);
+    }
+
+    .swatch .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono-sm);
+      color: var(--text-tertiary);
+    }
+
+    /* ── Semantic Token Table ─────────────────────── */
+    .token-table {
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .token-table .table-header {
+      display: grid;
+      grid-template-columns: 240px 200px 1fr;
+      padding: var(--space-4) var(--space-6);
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .token-table .table-header span {
+      font-weight: var(--weight-bold);
+      font-size: var(--fs-label);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+
+    .token-row {
+      display: grid;
+      grid-template-columns: 240px 200px 1fr;
+      padding: var(--space-4) var(--space-6);
+      border-bottom: 1px solid var(--border-subtle);
+      align-items: center;
+    }
+
+    .token-row:last-child { border-bottom: none; }
+
+    .token-name {
+      font-family: var(--font-mono);
+      font-weight: var(--weight-bold);
+      font-size: var(--fs-mono);
+    }
+
+    .token-swatch-ref {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-weight: var(--weight-medium);
+    }
+
+    .token-swatch-ref .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-default);
+      flex-shrink: 0;
+    }
+
+    .token-use {
+      color: var(--text-secondary);
+    }
+
+    /* ── Status Colors ────────────────────────────── */
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+    }
+
+    .status-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+    }
+
+    .status-indicator {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      flex-shrink: 0;
+    }
+
+    .status-card .status-label {
+      font-weight: var(--weight-bold);
+      font-size: var(--fs-body);
+      margin-bottom: var(--space-1);
+    }
+
+    .status-card .status-code {
+      font-family: var(--font-mono);
+      font-size: var(--fs-body-sm);
+      color: var(--text-tertiary);
+    }
+
+    /* ── Spacing Scale ────────────────────────────── */
+    .spacing-container {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+    }
+
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      margin-bottom: var(--space-4);
+    }
+
+    .spacing-row:last-child { margin-bottom: 0; }
+
+    .spacing-value {
+      font-family: var(--font-mono);
+      font-weight: var(--weight-bold);
+      font-size: var(--fs-body-sm);
+      width: 40px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .spacing-bar {
+      height: 16px;
+      background: var(--accent-primary);
+      border-radius: var(--radius-sm);
+    }
+
+    .spacing-label {
+      font-size: var(--fs-mono);
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    /* ── Border Radii ─────────────────────────────── */
+    .radii-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: var(--space-5);
+    }
+
+    .radius-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      text-align: center;
+    }
+
+    .radius-preview {
+      width: 56px;
+      height: 56px;
+      background: var(--bg-elevated);
+      margin: 0 auto var(--space-4);
+    }
+
+    .radius-card .radius-label {
+      font-family: var(--font-mono);
+      font-weight: var(--weight-bold);
+      font-size: var(--fs-body-sm);
+    }
+
+    /* ── Shadow Levels ────────────────────────────── */
+    .shadow-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-5);
+    }
+
+    .shadow-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+
+    .shadow-card .shadow-name {
+      font-family: var(--font-mono);
+      font-weight: var(--weight-bold);
+      font-size: var(--fs-body);
+      margin-bottom: var(--space-3);
+    }
+
+    .shadow-card .shadow-desc {
+      font-size: var(--fs-mono);
+      color: var(--text-secondary);
+      line-height: var(--lh-body);
+    }
+
+    /* ── Footer ───────────────────────────────────── */
+    .ds-footer {
+      display: flex;
+      justify-content: space-between;
+      padding-top: var(--space-7);
+      border-top: 1px solid var(--border-default);
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono-sm);
+      color: var(--text-tertiary);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-tag">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" /><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="white" stroke-width="2" fill="none"/></svg>
+        </div>
+        SYS_REF // DESIGN_V1
+      </div>
+      <h1>Design System</h1>
+      <p class="subtitle">Personal Portfolio &middot; Style Guide &amp; Token Reference</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- 01 TYPOGRAPHY -->
+    <div class="section">
+      <div class="section-num">01 // Typography</div>
+      <h2 class="section-title">Typography Scale</h2>
+      <p class="section-desc">A clean pairing of Space Grotesk for operational hierarchy and Space Mono for technical system printouts.</p>
+
+      <div class="font-cards">
+        <div class="font-card">
+          <div class="card-label">Primary Font Family</div>
+          <div class="font-name">Space Grotesk</div>
+          <p class="font-desc">Used for high-impact display headings, titles, sections, and standard UI components. Optimal at medium-to-large sizing.</p>
+        </div>
+        <div class="font-card mono">
+          <div class="card-label">Monospace Font Family</div>
+          <div class="font-name">Space&nbsp; Mono</div>
+          <p class="font-desc">Reserved for cryptographic hashes, intelligence data outputs, network visualizer printouts, and system stats.</p>
+        </div>
+      </div>
+
+      <div class="sub-label">Supported Weights</div>
+      <div class="weights-row">
+        <span class="weight-chip" style="font-weight: var(--weight-regular);">Regular (400)</span>
+        <span class="weight-chip" style="font-weight: var(--weight-medium);">Medium (500)</span>
+        <span class="weight-chip" style="font-weight: var(--weight-bold);">Bold (700)</span>
+      </div>
+
+      <div class="type-scale">
+        <div class="type-row">
+          <div class="type-meta"><span class="name">Display</span><span class="spec">Space Grotesk &middot; 48px / 56px &middot; Bold</span></div>
+          <div class="type-sample"><span class="preview" style="font-size: var(--fs-display); line-height: var(--lh-display); font-weight: var(--weight-bold);">Intelligence Briefing</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">H1</span><span class="spec">Space Grotesk &middot; 36px / 44px &middot; Bold</span></div>
+          <div class="type-sample"><span class="preview" style="font-size: var(--fs-h1); line-height: var(--lh-h1); font-weight: var(--weight-bold);">Case File Overview</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">H2</span><span class="spec">Space Grotesk &middot; 28px / 36px &middot; Bold</span></div>
+          <div class="type-sample"><span class="preview" style="font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: var(--weight-bold);">Investigation Summary</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">H3</span><span class="spec">Space Grotesk &middot; 22px / 28px &middot; Bold</span></div>
+          <div class="type-sample"><span class="preview" style="font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: var(--weight-bold);">Evidence Analysis Ledger</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">H4</span><span class="spec">Space Grotesk &middot; 18px / 24px &middot; Bold</span></div>
+          <div class="type-sample"><span class="preview" style="font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: var(--weight-bold);">Source Attribution Logs</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">Body Large</span><span class="spec">Space Grotesk &middot; 16px / 24px &middot; Regular</span></div>
+          <div class="type-sample"><span class="preview" style="font-size: var(--fs-body-lg); line-height: var(--lh-body-lg);">Open-source intelligence gathering and forensic analysis for verified digital operations.</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">Body</span><span class="spec">Space Grotesk &middot; 14px / 20px &middot; Regular</span></div>
+          <div class="type-sample"><span class="preview" style="font-size: var(--fs-body); line-height: var(--lh-body);">Structured methodology for collecting, processing, and validating publicly available information securely.</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">Body Small</span><span class="spec">Space Grotesk &middot; 12px / 16px &middot; Regular</span></div>
+          <div class="type-sample"><span class="preview" style="font-size: var(--fs-body-sm); line-height: var(--lh-body-sm);">Cross-referencing multiple verified indicators of compromise across centralized data stores.</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">Label</span><span class="spec">Space Grotesk &middot; 12px / 16px &middot; Bold</span></div>
+          <div class="type-sample"><span class="preview" style="font-size: var(--fs-label); line-height: var(--lh-label); font-weight: var(--weight-bold); text-transform: uppercase; letter-spacing: 0.05em;">CLASSIFICATION &middot; SYSTEM_STATUS</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">Caption</span><span class="spec">Space Grotesk &middot; 11px / 14px &middot; Medium</span></div>
+          <div class="type-sample"><span class="preview" style="font-size: var(--fs-caption); line-height: var(--lh-caption); font-weight: var(--weight-medium);">Operational metadata for internal distribution only.</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">Mono Default</span><span class="spec">Space Mono &middot; 13px / 20px &middot; Regular</span></div>
+          <div class="type-sample"><span class="preview" style="font-family: var(--font-mono); font-size: var(--fs-mono); line-height: var(--lh-mono);">sha256:3f4b8c2a &middot; timestamp: 2024-11-15T08:32:00Z</span></div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta"><span class="name">Mono Small</span><span class="spec">Space Mono &middot; 11px / 16px &middot; Regular</span></div>
+          <div class="type-sample"><span class="preview" style="font-family: var(--font-mono); font-size: var(--fs-mono-sm); line-height: var(--lh-mono-sm);">SECURE_CHANNEL // ESTABLISHING_PING_88ms</span></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- 02 COLORS -->
+    <div class="section">
+      <div class="section-num">02 // Colors</div>
+      <h2 class="section-title">Color Palette Swatches</h2>
+      <p class="section-desc">A highly classified Slate baseline accented with cryptographic Blue tones for user interaction states.</p>
+
+      <div class="sub-label">Slate System Shades</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="color-block" style="background: var(--slate-50);"></div><div class="swatch-info"><div class="swatch-name">Slate 50</div><div class="swatch-hex">#F8FAFC</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--slate-100);"></div><div class="swatch-info"><div class="swatch-name">Slate 100</div><div class="swatch-hex">#F1F5F9</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--slate-200);"></div><div class="swatch-info"><div class="swatch-name">Slate 200</div><div class="swatch-hex">#E2E8F0</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--slate-300);"></div><div class="swatch-info"><div class="swatch-name">Slate 300</div><div class="swatch-hex">#CBD5E1</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--slate-400);"></div><div class="swatch-info"><div class="swatch-name">Slate 400</div><div class="swatch-hex">#94A3B8</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--slate-500);"></div><div class="swatch-info"><div class="swatch-name">Slate 500</div><div class="swatch-hex">#64748B</div></div></div>
+      </div>
+      <div class="swatch-grid five-col">
+        <div class="swatch"><div class="color-block" style="background: var(--slate-600);"></div><div class="swatch-info"><div class="swatch-name">Slate 600</div><div class="swatch-hex">#475569</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--slate-700);"></div><div class="swatch-info"><div class="swatch-name">Slate 700</div><div class="swatch-hex">#334155</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--slate-800);"></div><div class="swatch-info"><div class="swatch-name">Slate 800</div><div class="swatch-hex">#1E293B</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--slate-900);"></div><div class="swatch-info"><div class="swatch-name">Slate 900</div><div class="swatch-hex">#0F172A</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--slate-950);"></div><div class="swatch-info"><div class="swatch-name">Slate 950</div><div class="swatch-hex">#020617</div></div></div>
+      </div>
+
+      <div class="sub-label">Blue Interaction Accents</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="color-block" style="background: var(--blue-50);"></div><div class="swatch-info"><div class="swatch-name">Blue 50</div><div class="swatch-hex">#EFF6FF</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--blue-100);"></div><div class="swatch-info"><div class="swatch-name">Blue 100</div><div class="swatch-hex">#DBEAFE</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--blue-200);"></div><div class="swatch-info"><div class="swatch-name">Blue 200</div><div class="swatch-hex">#BFDBFE</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--blue-300);"></div><div class="swatch-info"><div class="swatch-name">Blue 300</div><div class="swatch-hex">#93C5FD</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--blue-400);"></div><div class="swatch-info"><div class="swatch-name">Blue 400</div><div class="swatch-hex">#60A5FA</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--blue-500);"></div><div class="swatch-info"><div class="swatch-name">Blue 500</div><div class="swatch-hex">#3B82F6</div></div></div>
+      </div>
+      <div class="swatch-grid five-col">
+        <div class="swatch"><div class="color-block" style="background: var(--blue-600);"></div><div class="swatch-info"><div class="swatch-name">Blue 600</div><div class="swatch-hex">#2563EB</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--blue-700);"></div><div class="swatch-info"><div class="swatch-name">Blue 700</div><div class="swatch-hex">#1D4ED8</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--blue-800);"></div><div class="swatch-info"><div class="swatch-name">Blue 800</div><div class="swatch-hex">#1E40AF</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--blue-900);"></div><div class="swatch-info"><div class="swatch-name">Blue 900</div><div class="swatch-hex">#1E3A8A</div></div></div>
+        <div class="swatch"><div class="color-block" style="background: var(--blue-950);"></div><div class="swatch-info"><div class="swatch-name">Blue 950</div><div class="swatch-hex">#172554</div></div></div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- 03 SEMANTIC TOKENS -->
+    <div class="section">
+      <div class="section-num">03 // Semantic Tokens</div>
+      <h2 class="section-title">Semantic Map</h2>
+      <p class="section-desc">Contextual variables mapping the global color swatches to architectural elements.</p>
+
+      <div class="token-table">
+        <div class="table-header">
+          <span>Token Name</span>
+          <span>Mapped Swatch</span>
+          <span>Intended Use Case</span>
+        </div>
+        <div class="token-row"><span class="token-name">background/primary</span><span class="token-swatch-ref"><span class="dot" style="background: var(--slate-50);"></span>Slate 50</span><span class="token-use">Default application/page viewport backdrop.</span></div>
+        <div class="token-row"><span class="token-name">background/secondary</span><span class="token-swatch-ref"><span class="dot" style="background: white;"></span>White</span><span class="token-use">Card backdrops, content blocks, and secondary plates.</span></div>
+        <div class="token-row"><span class="token-name">background/surface</span><span class="token-swatch-ref"><span class="dot" style="background: white;"></span>White</span><span class="token-use">Nested elements and modal surfaces.</span></div>
+        <div class="token-row"><span class="token-name">background/elevated</span><span class="token-swatch-ref"><span class="dot" style="background: var(--slate-100);"></span>Slate 100</span><span class="token-use">Active hover states or subtle contrast sections.</span></div>
+        <div class="token-row"><span class="token-name">text/primary</span><span class="token-swatch-ref"><span class="dot" style="background: var(--slate-900);"></span>Slate 900</span><span class="token-use">Heavy contrast content, headers, and title labels.</span></div>
+        <div class="token-row"><span class="token-name">text/secondary</span><span class="token-swatch-ref"><span class="dot" style="background: var(--slate-600);"></span>Slate 600</span><span class="token-use">Standard body copies, descriptions, and structural tags.</span></div>
+        <div class="token-row"><span class="token-name">text/tertiary</span><span class="token-swatch-ref"><span class="dot" style="background: var(--slate-400);"></span>Slate 400</span><span class="token-use">De-emphasized footnotes, dates, and non-active details.</span></div>
+        <div class="token-row"><span class="token-name">text/inverse</span><span class="token-swatch-ref"><span class="dot" style="background: white;"></span>White</span><span class="token-use">Text displaying over dark buttons or active headers.</span></div>
+        <div class="token-row"><span class="token-name">accent/primary</span><span class="token-swatch-ref"><span class="dot" style="background: var(--blue-600);"></span>Blue 600</span><span class="token-use">Core buttons, highlights, primary system banners.</span></div>
+        <div class="token-row"><span class="token-name">accent/hover</span><span class="token-swatch-ref"><span class="dot" style="background: var(--blue-700);"></span>Blue 700</span><span class="token-use">User interaction states for buttons and secure nodes.</span></div>
+        <div class="token-row"><span class="token-name">accent/subtle</span><span class="token-swatch-ref"><span class="dot" style="background: var(--blue-50);"></span>Blue 50</span><span class="token-use">Pill backdrops, selected tabs, and subtle indicator fills.</span></div>
+        <div class="token-row"><span class="token-name">border/default</span><span class="token-swatch-ref"><span class="dot" style="background: var(--slate-200);"></span>Slate 200</span><span class="token-use">Standard structural dividers, grids, and swatches.</span></div>
+        <div class="token-row"><span class="token-name">border/subtle</span><span class="token-swatch-ref"><span class="dot" style="background: var(--slate-100);"></span>Slate 100</span><span class="token-use">Faint separations between micro-elements.</span></div>
+        <div class="token-row"><span class="token-name">border/strong</span><span class="token-swatch-ref"><span class="dot" style="background: var(--slate-300);"></span>Slate 300</span><span class="token-use">High-visibility card bounds, form fields, and input lines.</span></div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- 04 STATUS SYSTEM -->
+    <div class="section">
+      <div class="section-num">04 // Status System</div>
+      <h2 class="section-title">Signal Colors</h2>
+      <p class="section-desc">Versatile color signals for tags, badges, callouts, categories, highlights, and state indicators across the system.</p>
+
+      <div class="status-grid">
+        <div class="status-card">
+          <div class="status-indicator" style="background: var(--status-success);"></div>
+          <div><div class="status-label">Success</div><div class="status-code">VERIFIED (#22C55E)</div></div>
+        </div>
+        <div class="status-card">
+          <div class="status-indicator" style="background: var(--status-warning);"></div>
+          <div><div class="status-label">Warning</div><div class="status-code">ALERT_WARN (#F59E0B)</div></div>
+        </div>
+        <div class="status-card">
+          <div class="status-indicator" style="background: var(--status-error);"></div>
+          <div><div class="status-label">Error</div><div class="status-code">ALERT_ERR (#EF4444)</div></div>
+        </div>
+        <div class="status-card">
+          <div class="status-indicator" style="background: var(--status-info);"></div>
+          <div><div class="status-label">Information</div><div class="status-code">SYSTEM_INFO (#3B82F6)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- 05 SPACING SCALE -->
+    <div class="section">
+      <div class="section-num">05 // Spacing Scale</div>
+      <h2 class="section-title">Linear Spacing Scale</h2>
+      <p class="section-desc">Predictable spatial intervals designed to maintain operational layout grid symmetry.</p>
+
+      <div class="spacing-container">
+        <div class="spacing-row"><span class="spacing-value">2px</span><div class="spacing-bar" style="width: 2px;"></div><span class="spacing-label">Step 1</span></div>
+        <div class="spacing-row"><span class="spacing-value">4px</span><div class="spacing-bar" style="width: 4px;"></div><span class="spacing-label">Step 2</span></div>
+        <div class="spacing-row"><span class="spacing-value">8px</span><div class="spacing-bar" style="width: 8px;"></div><span class="spacing-label">Step 3</span></div>
+        <div class="spacing-row"><span class="spacing-value">12px</span><div class="spacing-bar" style="width: 12px;"></div><span class="spacing-label">Step 4</span></div>
+        <div class="spacing-row"><span class="spacing-value">16px</span><div class="spacing-bar" style="width: 16px;"></div><span class="spacing-label">Step 5</span></div>
+        <div class="spacing-row"><span class="spacing-value">20px</span><div class="spacing-bar" style="width: 20px;"></div><span class="spacing-label">Step 6</span></div>
+        <div class="spacing-row"><span class="spacing-value">24px</span><div class="spacing-bar" style="width: 24px;"></div><span class="spacing-label">Step 7</span></div>
+        <div class="spacing-row"><span class="spacing-value">32px</span><div class="spacing-bar" style="width: 32px;"></div><span class="spacing-label">Step 8</span></div>
+        <div class="spacing-row"><span class="spacing-value">40px</span><div class="spacing-bar" style="width: 40px;"></div><span class="spacing-label">Step 9</span></div>
+        <div class="spacing-row"><span class="spacing-value">48px</span><div class="spacing-bar" style="width: 48px;"></div><span class="spacing-label">Step 10</span></div>
+        <div class="spacing-row"><span class="spacing-value">64px</span><div class="spacing-bar" style="width: 64px;"></div><span class="spacing-label">Step 11</span></div>
+        <div class="spacing-row"><span class="spacing-value">80px</span><div class="spacing-bar" style="width: 80px;"></div><span class="spacing-label">Step 12</span></div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- 06 BORDER RADII -->
+    <div class="section">
+      <div class="section-num">06 // Border Radii</div>
+      <h2 class="section-title">Friction Envelopes</h2>
+      <p class="section-desc">System corner radii from severe angular none states to smooth organic pills.</p>
+
+      <div class="radii-row">
+        <div class="radius-card"><div class="radius-preview" style="border-radius: var(--radius-none);"></div><div class="radius-label">none (0)</div></div>
+        <div class="radius-card"><div class="radius-preview" style="border-radius: var(--radius-sm);"></div><div class="radius-label">sm (4)</div></div>
+        <div class="radius-card"><div class="radius-preview" style="border-radius: var(--radius-md);"></div><div class="radius-label">md (6)</div></div>
+        <div class="radius-card"><div class="radius-preview" style="border-radius: var(--radius-lg);"></div><div class="radius-label">lg (8)</div></div>
+        <div class="radius-card"><div class="radius-preview" style="border-radius: var(--radius-xl);"></div><div class="radius-label">xl (12)</div></div>
+        <div class="radius-card"><div class="radius-preview" style="border-radius: var(--radius-2xl);"></div><div class="radius-label">2xl (16)</div></div>
+        <div class="radius-card"><div class="radius-preview" style="border-radius: var(--radius-full);"></div><div class="radius-label">full (9999)</div></div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- 07 SHADOWS -->
+    <div class="section">
+      <div class="section-num">07 // Elevation / Shadows</div>
+      <h2 class="section-title">Shadow Levels</h2>
+      <p class="section-desc">Simulated optical depths representing spatial hierarchy across cards and modals.</p>
+
+      <div class="shadow-grid">
+        <div class="shadow-card" style="box-shadow: var(--shadow-xs);"><div class="shadow-name">Shadow/XS</div><div class="shadow-desc">Faint separation for flat inline interactive nodes.</div></div>
+        <div class="shadow-card" style="box-shadow: var(--shadow-sm);"><div class="shadow-name">Shadow/SM</div><div class="shadow-desc">Default standard depth for portfolio case files.</div></div>
+        <div class="shadow-card" style="box-shadow: var(--shadow-md);"><div class="shadow-name">Shadow/MD</div><div class="shadow-desc">Stronger elevation used for active elements and hovering.</div></div>
+        <div class="shadow-card" style="box-shadow: var(--shadow-lg);"><div class="shadow-name">Shadow/LG</div><div class="shadow-desc">Deeper projection for floating panels and filters.</div></div>
+        <div class="shadow-card" style="box-shadow: var(--shadow-xl);"><div class="shadow-name">Shadow/XL</div><div class="shadow-desc">Maximum isolation for modals and secure system overlays.</div></div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- FOOTER -->
+    <div class="ds-footer">
+      <span>OPERATIONAL MANUAL // DOC_ID: SC-DSS-2026</span>
+      <span>PORTFOLIO DESIGN SYSTEM &copy; 2026 ALL RIGHTS RESERVED</span>
+    </div>
+
+  </div>
+</body>
+</html>
+
