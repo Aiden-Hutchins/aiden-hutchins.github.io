@@ -131,7 +131,7 @@
     <section class="section" id="experience" aria-labelledby="experience-title">
       <h2 class="section__title" id="experience-title">Experience</h2>
 
-      <article class="entry">
+      <article class="entry" id="exp-icn">
         <div class="entry__meta">
           <p class="entry__dates">Jan 2026 – Present</p>
           <p class="entry__place">Fort Wayne, IN</p>
@@ -147,7 +147,7 @@
         </div>
       </article>
 
-      <article class="entry">
+      <article class="entry" id="exp-nsf">
         <div class="entry__meta">
           <p class="entry__dates">Nov 2025 – May 2026</p>
           <p class="entry__place">Fort Wayne, IN</p>
@@ -163,7 +163,7 @@
         </div>
       </article>
 
-      <article class="entry">
+      <article class="entry" id="exp-help">
         <div class="entry__meta">
           <p class="entry__dates">Jan 2025 – Dec 2025</p>
           <p class="entry__place">Fort Wayne, IN</p>
@@ -179,7 +179,7 @@
         </div>
       </article>
 
-      <article class="entry">
+      <article class="entry" id="exp-cw">
         <div class="entry__meta">
           <p class="entry__dates">Apr 2025 – Aug 2026</p>
           <p class="entry__place">Competitive team</p>
@@ -200,17 +200,17 @@
     <section class="section section--band" id="competitions" aria-labelledby="competitions-title">
       <h2 class="section__title" id="competitions-title">Competitions</h2>
       <ul class="results">
-        <li class="result">
+        <li class="result" id="comp-ccdc">
           <p class="result__headline">1st place</p>
           <h3 class="result__name">Collegiate Cyber Defense Competition</h3>
           <p class="result__detail">Linux systems defense and technical injects. 3 appearances: State, State Wildcard (1st place), and Regionals.</p>
         </li>
-        <li class="result">
+        <li class="result" id="comp-ncl">
           <p class="result__headline">Top 500 nationally</p>
           <h3 class="result__name">National Cyber League</h3>
           <p class="result__detail">2 individual appearances, one placing in the national Top 500, plus 1 team appearance.</p>
         </li>
-        <li class="result">
+        <li class="result" id="comp-cptc">
           <p class="result__headline">Regional appearance</p>
           <h3 class="result__name">Collegiate Penetration Testing Competition</h3>
           <p class="result__detail">Offensive / red team. 1 regional appearance.</p>
@@ -221,7 +221,7 @@
     <!-- ── Projects ─────────────────────────────────── -->
     <section class="section" id="projects" aria-labelledby="projects-title">
       <h2 class="section__title" id="projects-title">Projects</h2>
-      <article class="entry">
+      <article class="entry" id="proj-osint">
         <div class="entry__meta">
           <p class="entry__dates">In progress</p>
         </div>
@@ -239,38 +239,55 @@
     <!-- ── Skills ───────────────────────────────────── -->
     <section class="section section--band" id="skills" aria-labelledby="skills-title">
       <h2 class="section__title" id="skills-title">Skills</h2>
-      <ol class="phases">
+      <!-- Investigation board: each skill button lists the evidence it's backed by
+           (data-links = ids of evidence cards). DRAFT: verify each link is accurate. -->
+      <p class="board__hint">Select a skill to trace it to the work behind it.</p>
+      <div class="board">
+        <ol class="phases">
         <li class="phase">
           <p class="phase__num">01</p>
           <h3 class="phase__name">Collect</h3>
           <p class="phase__desc">Gathering information and evidence</p>
-          <ul class="tags"><li>OSINT methodology</li><li>Debian Linux investigation VM</li><li>System reconnaissance</li><li>Data acquisition</li></ul>
+          <ul class="tags"><li><button type="button" class="tag-btn" data-links="proj-osint" aria-label="OSINT methodology: show the work behind it">OSINT methodology</button></li><li><button type="button" class="tag-btn" data-links="proj-osint" aria-label="Debian Linux investigation VM: show the work behind it">Debian Linux investigation VM</button></li><li><button type="button" class="tag-btn" data-links="exp-cw comp-cptc comp-ncl comp-ccdc" aria-label="System reconnaissance: show the work behind it">System reconnaissance</button></li><li><button type="button" class="tag-btn" data-links="exp-cw comp-cptc exp-icn comp-ncl" aria-label="Data acquisition: show the work behind it">Data acquisition</button></li></ul>
         </li>
         <li class="phase">
           <p class="phase__num">02</p>
           <h3 class="phase__name">Analyze</h3>
           <p class="phase__desc">Making sense of what was collected</p>
-          <ul class="tags"><li>Vulnerability assessment</li><li>NIST CSF</li><li>NIST 800-53</li><li>Bash</li><li>Python</li></ul>
+          <ul class="tags"><li><button type="button" class="tag-btn" data-links="exp-icn comp-ccdc exp-cw" aria-label="Vulnerability assessment: show the work behind it">Vulnerability assessment</button></li><li><button type="button" class="tag-btn" data-links="exp-icn" aria-label="NIST CSF: show the work behind it">NIST CSF</button></li><li><button type="button" class="tag-btn" data-links="exp-icn" aria-label="NIST 800-53: show the work behind it">NIST 800-53</button></li><li><button type="button" class="tag-btn" data-links="exp-cw" aria-label="Bash: show the work behind it">Bash</button></li></ul>
         </li>
         <li class="phase">
           <p class="phase__num">03</p>
           <h3 class="phase__name">Report</h3>
           <p class="phase__desc">Communicating findings others can verify</p>
-          <ul class="tags"><li>Technical writing</li><li>Structured assessments</li><li>Public-facing publications</li><li>Training &amp; mentorship</li></ul>
+          <ul class="tags"><li><button type="button" class="tag-btn" data-links="exp-icn exp-nsf exp-cw" aria-label="Technical writing: show the work behind it">Technical writing</button></li><li><button type="button" class="tag-btn" data-links="exp-icn exp-nsf" aria-label="Structured assessments: show the work behind it">Structured assessments</button></li><li><button type="button" class="tag-btn" data-links="exp-icn" aria-label="Public-facing publications: show the work behind it">Public-facing publications</button></li><li><button type="button" class="tag-btn" data-links="exp-help exp-nsf" aria-label="Training &amp; mentorship: show the work behind it">Training &amp; mentorship</button></li></ul>
         </li>
         <li class="phase">
           <p class="phase__num">04</p>
           <h3 class="phase__name">Defend</h3>
           <p class="phase__desc">Keeping systems and accounts sound</p>
-          <ul class="tags"><li>Windows &amp; Linux environments</li><li>Linux hardening</li><li>MFA / SSO administration</li><li>Microsoft Suite</li><li>Google Workspace</li></ul>
+          <ul class="tags"><li><button type="button" class="tag-btn" data-links="comp-ccdc exp-cw proj-osint comp-ncl" aria-label="Linux environments: show the work behind it">Linux environments</button></li><li><button type="button" class="tag-btn" data-links="exp-cw comp-ccdc" aria-label="Linux hardening: show the work behind it">Linux hardening</button></li><li><button type="button" class="tag-btn" data-links="exp-help" aria-label="MFA / SSO administration: show the work behind it">MFA / SSO administration</button></li><li><button type="button" class="tag-btn" data-links="exp-help" aria-label="Microsoft Suite: show the work behind it">Microsoft Suite</button></li><li><button type="button" class="tag-btn" data-links="exp-icn exp-nsf exp-cw comp-ccdc comp-cptc" aria-label="Google Workspace: show the work behind it">Google Workspace</button></li></ul>
         </li>
-      </ol>
+        </ol>
+        <p class="board__label">Evidence</p>
+        <ul class="evidence">
+          <li><a class="ev-card" href="#exp-icn" data-evidence="exp-icn"><span class="ev-card__type">Experience</span><span class="ev-card__title">Security Analyst</span><span class="ev-card__sub">Indiana Cyber Network</span></a></li>
+          <li><a class="ev-card" href="#exp-nsf" data-evidence="exp-nsf"><span class="ev-card__type">Experience</span><span class="ev-card__title">AI &amp; Ethics Analyst</span><span class="ev-card__sub">IUSE NSF Research Grant</span></a></li>
+          <li><a class="ev-card" href="#exp-help" data-evidence="exp-help"><span class="ev-card__type">Experience</span><span class="ev-card__title">IT Services Desk Technician</span><span class="ev-card__sub">Indiana Tech</span></a></li>
+          <li><a class="ev-card" href="#exp-cw" data-evidence="exp-cw"><span class="ev-card__type">Team</span><span class="ev-card__title">Offense, Unix &amp; GRC Specialist</span><span class="ev-card__sub">Indiana Tech Cyber Warriors</span></a></li>
+          <li><a class="ev-card" href="#proj-osint" data-evidence="proj-osint"><span class="ev-card__type">Project</span><span class="ev-card__title">OSINT Investigation Workstation</span><span class="ev-card__sub">Independent</span></a></li>
+          <li><a class="ev-card" href="#comp-ccdc" data-evidence="comp-ccdc"><span class="ev-card__type">Competition</span><span class="ev-card__title">CCDC</span><span class="ev-card__sub">State Wildcard, 1st place</span></a></li>
+          <li><a class="ev-card" href="#comp-ncl" data-evidence="comp-ncl"><span class="ev-card__type">Competition</span><span class="ev-card__title">National Cyber League</span><span class="ev-card__sub">Top 500 nationally</span></a></li>
+          <li><a class="ev-card" href="#comp-cptc" data-evidence="comp-cptc"><span class="ev-card__type">Competition</span><span class="ev-card__title">CPTC</span><span class="ev-card__sub">Regional appearance</span></a></li>
+        </ul>
+        <svg class="board__strings" aria-hidden="true"></svg>
+      </div>
     </section>
 
     <!-- ── Education ────────────────────────────────── -->
     <section class="section" id="education" aria-labelledby="education-title">
       <h2 class="section__title" id="education-title">Education</h2>
-      <article class="entry">
+      <article class="entry" id="edu-itech">
         <div class="entry__meta">
           <p class="entry__dates">Expected Dec 2027</p>
           <p class="entry__place">Fort Wayne, IN</p>

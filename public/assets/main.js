@@ -75,6 +75,113 @@ if (root.classList.contains('intro-active')) {
   pageReady();
 }
 
+// ── Investigation board ──────────────────────────────────────
+// Hover or focus a skill to trace red string to the evidence behind it;
+// click to pin it. Strings are drawn only on wider screens; on phones the
+// linked evidence cards are highlighted instead.
+(() => {
+  const board = document.querySelector('.board');
+  if (!board) return;
+  const svg = board.querySelector('.board__strings');
+  const buttons = [...board.querySelectorAll('.tag-btn')];
+  const cards = new Map([...board.querySelectorAll('.ev-card')].map((c) => [c.dataset.evidence, c]));
+  const NS = 'http://www.w3.org/2000/svg';
+  const wide = window.matchMedia('(min-width: 769px)');
+  let pinned = null;
+  let current = null;
+
+  buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
+
+  function clear() {
+    svg.replaceChildren();
+    board.classList.remove('is-tracing');
+    buttons.forEach((b) => {
+      b.classList.remove('is-active');
+      b.setAttribute('aria-pressed', String(b === pinned));
+    });
+    cards.forEach((c) => c.classList.remove('is-linked'));
+    current = null;
+  }
+
+  function addPin(x, y) {
+    const pin = document.createElementNS(NS, 'circle');
+    pin.setAttribute('class', 'pin');
+    pin.setAttribute('cx', x);
+    pin.setAttribute('cy', y);
+    pin.setAttribute('r', 4);
+    svg.appendChild(pin);
+  }
+
+  function trace(btn, animate = true) {
+    clear();
+    current = btn;
+    const ids = btn.dataset.links.split(/\s+/).filter(Boolean);
+    board.classList.add('is-tracing');
+    btn.classList.add('is-active');
+    btn.setAttribute('aria-pressed', String(btn === pinned));
+    ids.forEach((id) => cards.get(id)?.classList.add('is-linked'));
+    if (!wide.matches) return;
+
+    const box = board.getBoundingClientRect();
+    const b = btn.getBoundingClientRect();
+    const x1 = b.left + b.width / 2 - box.left;
+    const y1 = b.bottom - box.top;
+
+    ids.forEach((id, i) => {
+      const card = cards.get(id);
+      if (!card) return;
+      const c = card.getBoundingClientRect();
+      const x2 = c.left + c.width / 2 - box.left;
+      const y2 = c.top - box.top;
+      // Slack string: the control point hangs below the midpoint.
+      const sag = Math.min(70, Math.abs(x2 - x1) * 0.12 + 24);
+      const path = document.createElementNS(NS, 'path');
+      path.setAttribute('class', 'string');
+      path.setAttribute('d', `M${x1},${y1} Q${(x1 + x2) / 2},${(y1 + y2) / 2 + sag} ${x2},${y2}`);
+      svg.appendChild(path);
+      addPin(x2, y2);
+
+      if (animate && !reduceMotion) {
+        const len = path.getTotalLength();
+        path.setAttribute('stroke-dasharray', len);
+        path.animate(
+          [{ strokeDashoffset: len }, { strokeDashoffset: 0 }],
+          { duration: 520, delay: i * 90, easing: 'cubic-bezier(.65, 0, .35, 1)', fill: 'backwards' }
+        );
+      }
+    });
+    addPin(x1, y1);
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('mouseenter', () => { if (!pinned) trace(btn); });
+    btn.addEventListener('mouseleave', () => { if (!pinned) clear(); });
+    btn.addEventListener('focus', () => { if (!pinned) trace(btn); });
+    btn.addEventListener('blur', () => { if (!pinned) clear(); });
+    btn.addEventListener('click', () => {
+      if (pinned === btn) { pinned = null; clear(); return; }
+      const already = current === btn;
+      pinned = btn;
+      trace(btn, !already);
+    });
+  });
+
+  // Unpin with Escape or a click elsewhere on the page.
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && pinned) { pinned = null; clear(); }
+  });
+  document.addEventListener('click', (e) => {
+    if (pinned && !board.contains(e.target)) { pinned = null; clear(); }
+  });
+
+  // Keep strings attached when the layout changes.
+  let raf = 0;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => { if (current) trace(current, false); });
+  });
+})();
+
 // ── Footer wordmark: hutchins → hutchinsight → hutch insight → hutch in sight ──
 (() => {
   const CONFIG = {
